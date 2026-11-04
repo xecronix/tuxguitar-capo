@@ -2,11 +2,7 @@
 
 Open **Tools → Capo Settings…** to view and change the current song's track pitch offsets. The dialog follows Ronald Weidner's specification and Pencil mockup. It uses TuxGuitar's own UI toolkit and needs no changes to TuxGuitar itself.
 
-## Try the prepared preview
-
-On this computer, run `C:\dev\TuxGuitar\preview\tuxguitar.exe`. This is a separate copy of the installed TuxGuitar 2.0.1 application with the plugin included. Its settings and temporary files stay in the preview folder. The existing installation and its preferences are unchanged.
-
-Open a demo from `C:\dev\TuxGuitar\capo-plugin\examples`, then choose **Tools → Capo Settings…**. The demo songs contain generated notes, not your musical work. Like any editor, the preview saves changes to the file you open; use the supplied demos for your first check.
+To try it, build the plugin, install the JAR, and open one of the generated demo songs in `examples`. Choose **Tools → Capo Settings…**.
 
 ## Install into the existing application
 
@@ -46,21 +42,7 @@ TuxGuitar retains its own limits: its history is finite and is not stored in a s
 
 The host API was built from upstream tag **2.0.1**, commit **533efa74e6a56bdae28bb776358305607c79cbff**. The tag's Maven files call themselves `9.99-SNAPSHOT`; that name does not mean this plugin was built against development HEAD. Use the pinned source and a dedicated Maven repository to avoid mixing host versions.
 
-Local tools already downloaded and verified:
-
-- Eclipse Temurin JDK **17.0.20.1+1**, under `C:\dev\TuxGuitar\.tools`.
-- Apache Maven **3.9.16**, in the same folder.
-- Checksums and download origins: `.tools\toolchain.json` in the project root.
-
-From PowerShell in `C:\dev\TuxGuitar\capo-plugin`:
-
-```powershell
-.\Build.ps1
-```
-
-The script loads the project-local toolchain, builds the required upstream Java modules if absent, runs plugin tests, and produces `target\tuxguitar-capo-1.0.0.jar`. It does not install the plugin. Use `-RebuildHost` to rebuild the pinned host modules explicitly.
-
-On another computer, put JDK 17 and Maven on PATH, download the pinned source from <https://github.com/helge17/tuxguitar/tree/533efa74e6a56bdae28bb776358305607c79cbff>, and run:
+Put JDK 17 and Maven on PATH, download the pinned source from <https://github.com/helge17/tuxguitar/tree/533efa74e6a56bdae28bb776358305607c79cbff>, and run:
 
 ```powershell
 .\Build.ps1 -Upstream 'C:\source\tuxguitar-2.0.1' -Repository 'C:\build\tuxguitar-2.0.1-m2' -RebuildHost
@@ -72,4 +54,4 @@ Maven needs network access on its first run. The JAR targets Java 9 bytecode, ma
 
 Built against the pinned 2.0.1 source and tested in a separate Windows x64 SWT copy of the installed **TuxGuitar 2.0.1**, using its bundled **JRE 21.0.7**. See `VALIDATION.md` for the checks performed. Other releases, operating systems, and JavaFX are unverified. The first version's dialog is English.
 
-The plugin JAR contains only the plugin's classes and resources. TuxGuitar and its runtime libraries are supplied by the host application. Upstream TuxGuitar source is available at the pinned link above; its license is LGPL 2.1. This project has not been published or submitted upstream.
+The plugin JAR contains only the plugin's classes and resources. TuxGuitar and its runtime libraries are supplied by the host application. Upstream TuxGuitar source is available at the pinned link above; its license is LGPL 2.1. The plugin source is available under the [MIT License](LICENSE).
