@@ -1,0 +1,4 @@
+plugin.name=Capo Settings
+plugin.description=Stage virtual capo offsets across tracks, with one Undo step per OK.
+plugin.author=Ronald Weidner
+plugin.version=1.0.0
